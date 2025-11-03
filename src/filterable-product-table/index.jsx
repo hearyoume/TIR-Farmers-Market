@@ -195,12 +195,12 @@ function ProductTable({ products, filterText, inStockOnly, sortBy, maxPrice }) {
         <div className="text-center py-12 text-gray-500">
           <p className="text-4xl mb-4">🥺</p>
           <p className="text-lg font-medium">
-            {generateEmptyProductMessage(
+            {generateEmptyProductMessage({
               filterText,
               inStockOnly,
               maxPrice,
-              MAX_PRODUCT_PRICE
-            )}
+              maxProductPrice: MAX_PRODUCT_PRICE,
+            })}
           </p>
           <p className="text-sm">Try adjusting your filters</p>
         </div>
