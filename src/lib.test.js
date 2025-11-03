@@ -24,23 +24,23 @@ describe("parsePrice", () => {
 describe("generateEmptyProductMessage", () => {
   it("shows search term when only search filter active", () => {
     expect(
-      generateEmptyProductMessage(
-        "dragon",
-        false,
-        MAX_PRODUCT_PRICE,
-        MAX_PRODUCT_PRICE
-      )
+      generateEmptyProductMessage({
+        searchQuery: "dragon",
+        inStockOnly: false,
+        maxPrice: MAX_PRODUCT_PRICE,
+        maxProductPrice: MAX_PRODUCT_PRICE,
+      })
     ).toBe('No products matching "dragon"');
   });
 
   it("shows stock status when only stock filter active", () => {
     expect(
-      generateEmptyProductMessage(
-        "",
-        true,
-        MAX_PRODUCT_PRICE,
-        MAX_PRODUCT_PRICE
-      )
+      generateEmptyProductMessage({
+        searchQuery: "",
+        inStockOnly: true,
+        maxPrice: MAX_PRODUCT_PRICE,
+        maxProductPrice: MAX_PRODUCT_PRICE,
+      })
     ).toBe("No products in stock");
   });
 
@@ -48,24 +48,34 @@ describe("generateEmptyProductMessage", () => {
     const INPUT_MAX_PRICE = 2;
 
     expect(
-      generateEmptyProductMessage("", false, INPUT_MAX_PRICE, MAX_PRODUCT_PRICE)
+      generateEmptyProductMessage({
+        searchQuery: "",
+        inStockOnly: false,
+        maxPrice: INPUT_MAX_PRICE,
+        maxProductPrice: MAX_PRODUCT_PRICE,
+      })
     ).toBe(`No products under $${INPUT_MAX_PRICE}`);
   });
 
   it('combines two conditions with "and"', () => {
     expect(
-      generateEmptyProductMessage(
-        "apple",
-        true,
-        MAX_PRODUCT_PRICE,
-        MAX_PRODUCT_PRICE
-      )
+      generateEmptyProductMessage({
+        searchQuery: "apple",
+        inStockOnly: true,
+        maxPrice: MAX_PRODUCT_PRICE,
+        maxProductPrice: MAX_PRODUCT_PRICE,
+      })
     ).toBe('No products matching "apple" and in stock');
   });
 
   it('combines three conditions with commas and "and"', () => {
     expect(
-      generateEmptyProductMessage("dragon", true, 2, MAX_PRODUCT_PRICE)
+      generateEmptyProductMessage({
+        searchQuery: "dragon",
+        inStockOnly: true,
+        maxPrice: 2,
+        maxProductPrice: MAX_PRODUCT_PRICE,
+      })
     ).toBe('No products matching "dragon", in stock and under $2');
   });
 });
