@@ -1,16 +1,17 @@
 /**
- * @param {string} searchQuery
- * @param {boolean} inStockOnly
- * @param {number} maxPrice
- * @param {number} maxProductPrice
+ * @param {Object} params
+ * @param {string} params.searchQuery
+ * @param {boolean} params.inStockOnly
+ * @param {number} params.maxPrice
+ * @param {number} params.maxProductPrice
  * @returns {string}
  */
-export const generateEmptyProductMessage = (
+export const generateEmptyProductMessage = ({
   searchQuery,
   inStockOnly,
   maxPrice,
-  maxProductPrice
-) => {
+  maxProductPrice,
+}) => {
   const conditions = [
     searchQuery && `matching "${searchQuery}"`,
     inStockOnly && "in stock",
