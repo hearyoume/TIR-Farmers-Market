@@ -21,7 +21,7 @@ This is a React educational project demonstrating the "Thinking in React" method
 
 - Use functional components with hooks (React 19 patterns)
 - Follow "Thinking in React" methodology: break UI into component hierarchy
-- Expected components: FilterableProductTable, SearchBar, ProductTable, ProductCategoryRow, ProductRow
+- Expected components: FilterableProductTable, SearchFilter, ProductTable, ProductCategoryRow, ProductRow
 - Colocate the components when feasible. There is no need for spreading 'one off' components into separate files.
 
 ### Data Handling
